@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+## Initialize stack (full reset)
+## Install Angular CLI
+##
+## Usage: fin init
+
+yellow='\033[1;33m'
+NC='\033[0m'
+
+#-------- Runtime ----------
+
+# Reset containers
+fin project reset --force
+
+# Install Angular CLI
+echo -e "${yellow}Installing the Angular CLI${NC}"
+cd "$PROJECT_ROOT"
+fin exec npm install -g @angular/cli || exit 1
+
+# Install new site
+fin install
+
+# Start development server
+fin develop

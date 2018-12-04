@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+## Creates new Angular site in $DOCROOT
+##
+## Removes existing files in $DOCROOT
+
+yellow='\033[1;33m'
+NC='\033[0m'
+
+cd "$PROJECT_ROOT"
+
+# Make sure project stack is running
+fin project start
+
+echo "${yellow}Creating new Angular project...${NC}"
+
+# Cleanup
+echo "Running cleanup"
+rm -rf "$PROJECT_ROOT/$DOCROOT" 2>/dev/null
+
+# When CPU is busy and docroot existed then docker can throw an error here, so give it a second to process the deletion
+sleep 1
+
+# Run new Angular project
+fin exec ng new "$DOCROOT" --defaults=true || exit 1

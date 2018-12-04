@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+## Start a local Angular development server
+##
+## Starts development server.
+## Should be left running for realtime updates.
+## Stop it by Ctrl-C when done.
+
+yellow='\033[1;33m'
+NC='\033[0m'
+
+# Make sure project stack is running
+fin project start
+
+cd "$PROJECT_ROOT/$DOCROOT"
+
+echo
+echo -e "${yellow}Starting Angular development server...${NC}"
+echo "Use Ctrl-C to stop ng serve"
+echo
+
+# Start develop server
+# --disable-host-check = Don't verify connected clients are part of allowed hosts. Needed when not using "localhost" as host name.
+fin exec ng serve "$DOCROOT" --host "0.0.0.0" --public-host "http://${VIRTUAL_HOST}" --port 3000 --disable-host-check
