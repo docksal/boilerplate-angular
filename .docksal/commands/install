@@ -12,7 +12,7 @@ cd "$PROJECT_ROOT"
 # Make sure project stack is running
 fin project start
 
-echo "${yellow}Creating new Angular project...${NC}"
+echo -e "${yellow}Creating new Angular project...${NC}"
 
 # Cleanup
 echo "Running cleanup"
