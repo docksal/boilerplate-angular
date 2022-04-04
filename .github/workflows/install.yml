@@ -18,6 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Install boilerplate
-        run: fin init
+        run: fin test
       - name: fin config
         run: fin config
